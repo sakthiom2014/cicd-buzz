@@ -6,4 +6,5 @@ else
     TAG="$TRAVIS_BRANCH"
 fi
 docker build -f Dockerfile -t $TRAVIS_REPO_SLUG:$TAG .
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 docker login -u "DOCKER_USER" -p "DOCKER_PASS" docker.io && push $TRAVIS_REPO_SLUG:$TAG
